@@ -1,0 +1,43 @@
+{
+  "form_name": "Hogwarts School of Witchcraft and Wizardry Registration",
+  "fields": [
+    {
+      "key": "full_name",
+      "type": "string",
+      "required": true,
+      "question": "What is the full name of the applicant?"
+    },
+    {
+      "key": "date_of_birth",
+      "type": "string",
+      "required": true,
+      "question": "What is the applicant's date of birth? (e.g., 31 July 1980)"
+    },
+    {
+      "key": "wizarding_family_status",
+      "type": "enum",
+      "options": ["Muggle-born", "Half-blood", "Pure-blood", "Unknown"],
+      "required": true,
+      "question": "What is the applicant's wizarding family status (Muggle-born, Half-blood, or Pure-blood)?"
+    },
+    {
+      "key": "magical_abilities_observed",
+      "type": "string",
+      "required": true,
+      "question": "Please describe any magical abilities or incidents observed."
+    },
+    {
+      "key": "contact_owl_address",
+      "type": "string",
+      "required": true,
+      "question": "What is the primary contact owl address for correspondence?"
+    },
+    {
+      "key": "preferred_house",
+      "type": "enum",
+      "options": ["Gryffindor", "Hufflepuff", "Ravenclaw", "Slytherin"],
+      "required": false,
+      "question": "Does the applicant have a preferred Hogwarts House? This is optional."
+    }
+  ]
+}
