@@ -33,8 +33,7 @@ def start_chat():
     
     return jsonify({
         "session_id": session_id,
-        "message": "Session started.",
-        "question": first_question
+        "message": first_question
     }), 201
 
 @app.route('/chat/<string:session_id>', methods=['POST'])
@@ -71,12 +70,12 @@ def chat(session_id):
         session.is_completed = True
         response_payload = {
             "status": "completed",
-            "response": ai_response.get("next_question", "Thank you! Registration is complete.")
+            "response": ai_response.get("response_to_user")
         }
     else:
         response_payload = {
             "status": "in_progress",
-            "response": ai_response.get("next_question", "Sorry, I am unsure how to proceed. Could you rephrase?")
+            "response": ai_response.get("response_to_user")
         }
 
     db.commit()

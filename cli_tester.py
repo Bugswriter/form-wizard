@@ -8,17 +8,24 @@ def main():
         sys.exit(1)
 
     try:
+        # --- FIX: Properly handle the initial response ---
         response = requests.post(f"{base_url}/chat/start")
         response.raise_for_status()
         data = response.json()
+        
         session_id = data.get("session_id")
-        first_question = data.get("question")
+        initial_message = data.get("message")
+
+        if not session_id or not initial_message:
+            print("Error: Could not start a new session. Invalid response from server.")
+            print(f"Details: {data}")
+            sys.exit(1)
         
         print(f"\nNew chat session started. Session ID: {session_id}")
         print("The agent will ask questions to complete the registration.")
         print("Type 'quit' to exit at any time.")
         print("-" * 30)
-        print(f"Agent: {first_question}")
+        print(f"Agent: {initial_message}")
 
     except requests.exceptions.RequestException as e:
         print(f"Error starting chat session: {e}")
